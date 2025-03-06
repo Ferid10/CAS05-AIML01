@@ -2,7 +2,7 @@ import google.generativeai as genai
 import webbrowser
 from flask import Flask, render_template, request, jsonify
 
-API_KEY = "AIzaSyBX4MtAHWRU0_5xwCocs8GvqYWnsAdH_PE"  # Replace with your actual API key
+API_KEY = "AIzaSyBX4MtAHWRU0_5xwCocs8GvqYWnsAdH_PE"  
 genai.configure(api_key=API_KEY)
 
 model = genai.GenerativeModel("gemini-1.5-pro")
