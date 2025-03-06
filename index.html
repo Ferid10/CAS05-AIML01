@@ -7,14 +7,15 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-    <div class="container">
-        <h1>I'm Ecommerce Chatbot</h1>
-        <h2>Choose an option:</h2>
+    <div class="chat-container">
+        <h1>Welcome to Our E-commerce Chatbot</h1>
+        <h2>How can I assist you today?</h2>
         <ul>
             <li><a href="{{ url_for('track_package') }}">Track Package</a></li>
             <li><a href="{{ url_for('view_offers') }}">View Offers</a></li>
-            <li><a href="{{ url_for('chat') }}">Enable AI Chat</a></li>
+            <li><a href="{{ url_for('chat') }}">Chat with AI</a></li>
         </ul>
     </div>
+    <a href="{{ url_for('chat') }}" class="chat-button">💬</a>
 </body>
 </html>
