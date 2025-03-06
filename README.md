@@ -9,7 +9,7 @@ Problem Statement ID: AIML01
 
 Tech Stack
 - Programming Language: Python
-- Libraries/Frameworks: TensorFlow / PyTorch, Flask
+- Libraries/Frameworks: TensorFlow / PyTorch, Flask,python-SpeechRecognititon library,eleven labs,assembly ai.
 - AI Models/Tools: Gemini API (or any other AI model API)
 
 Background
