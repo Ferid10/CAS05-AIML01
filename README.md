@@ -13,7 +13,7 @@ Tech Stack
 - AI Models/Tools: Gemini API (or any other AI model API)
 
 Background
-Since there are a large number of e-commerce websites right now,we are aiming to creaate a chatbot which can help the consumer with their needs such as product recomendations and helping them with the oders
+Since there are a large number of e-commerce websites right now,we are aiming to create a chatbot which can help the consumer with their needs such as product recomendations and helping them with the oders
 
 Goals
 - Create a base AI model capable of answering standard customer queries related to e-commerce.
