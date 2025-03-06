@@ -1,49 +1,50 @@
 import google.generativeai as genai
 import webbrowser
-API_KEY = "AIzaSyBX4MtAHWRU0_5xwCocs8GvqYWnsAdH_PE" 
+from flask import Flask, render_template, request, jsonify
+
+API_KEY = "AIzaSyBX4MtAHWRU0_5xwCocs8GvqYWnsAdH_PE"  # Replace with your actual API key
 genai.configure(api_key=API_KEY)
 
 model = genai.GenerativeModel("gemini-1.5-pro")
 
+app = Flask(__name__)
+
 def chat_bot(prompt):
     try:
         response = model.generate_content(prompt)
-        return response.text  
+        return response.text
     except Exception as e:
         return f"Error: {e}"
 
 def track_package():
-    tracking_id = input("Enter your tracking ID: ")
     webbrowser.open('https://www.indiapost.gov.in/')
+    return "Opened India Post tracking website. Please enter your tracking ID there."
 
 def view_offers():
-    return "Here are the latest offers: \n1. 20% off on electronics \n2. Buy 1 Get 1 Free on shoes \n3. Free shipping on orders over $50"
-print("I'm Ecommerce Chatbot")
-while True:
-    print("\nChoose an option:")
-    print("1. Track Package")
-    print("2. View Offers")
-    print("3. Enable AI Chat")
-    print("4. Exit")
+    return "Here are the latest offers: <br>1. 20% off on electronics <br>2. Buy 1 Get 1 Free on shoes <br>3. Free shipping on orders over $50"
 
-    choice = input("Enter your choice (1-4): ")
+@app.route("/")
+def index():
+    return render_template("index.html")
+
+@app.route("/process", methods=["POST"])
+def process():
+    choice = request.form["choice"]
 
     if choice == "1":
-        print(track_package())
+        result = track_package()
     elif choice == "2":
-        print(view_offers())
+        result = view_offers()
     elif choice == "3":
-        print("AI Chat Enabled. Type 'exit' to return to the main menu.")
-        while True:
-            user_input = input("You: ")
-            if user_input.lower() == "exit":
-                print("Returning to the main menu...")
-                break
-            response = chat_bot(user_input)
-            print("Chatbot:", response)
-    elif choice == "4":
-        print("Goodbye!")
-        break
+        user_input = request.form.get("user_input", "")
+        if user_input.lower() == "exit":
+            result = "Returning to the main menu..."
+        else:
+            result = chat_bot(user_input)
     else:
-        print("Invalid choice. Please try again.")
+        result = "Invalid choice. Please try again."
 
+    return jsonify({"result": result})
+
+if __name__ == "__main__":
+    app.run(debug=True)
