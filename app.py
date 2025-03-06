@@ -3,6 +3,7 @@ import google.generativeai as genai
 import webbrowser
 
 app = Flask(__name__)
+
 API_KEY = "AIzaSyBX4MtAHWRU0_5xwCocs8GvqYWnsAdH_PE"
 genai.configure(api_key=API_KEY)
 model = genai.GenerativeModel("gemini-1.5-pro")
@@ -10,7 +11,7 @@ model = genai.GenerativeModel("gemini-1.5-pro")
 def chat_bot(prompt):
     try:
         response = model.generate_content(prompt)
-        return response.text  
+        return response.text
     except Exception as e:
         return f"Error: {e}"
 
