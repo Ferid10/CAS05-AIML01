@@ -1,5 +1,5 @@
 import google.generativeai as genai
-
+import webbrowser
 API_KEY = "AIzaSyBX4MtAHWRU0_5xwCocs8GvqYWnsAdH_PE" 
 genai.configure(api_key=API_KEY)
 
@@ -14,7 +14,7 @@ def chat_bot(prompt):
 
 def track_package():
     tracking_id = input("Enter your tracking ID: ")
-    return f"Tracking details for {tracking_id}: (Fetching details...)"
+    webbrowser.open('https://www.indiapost.gov.in/')
 
 def view_offers():
     return "Here are the latest offers: \n1. 20% off on electronics \n2. Buy 1 Get 1 Free on shoes \n3. Free shipping on orders over $50"
@@ -46,3 +46,4 @@ while True:
         break
     else:
         print("Invalid choice. Please try again.")
+
