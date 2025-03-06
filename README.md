@@ -37,7 +37,6 @@ Expected Outcomes
 - A chatbot that utilizes the OpenAI API for answering complex or out-of-scope questions.
 - A scalable and efficient system capable of handling a high volume of customer queries.
 
-Conclusion
-This project aims to revolutionize customer support in e-commerce by leveraging AI to provide instant and accurate responses to customers. The combination of a base AI model and OpenAI API will allow the chatbot to handle a wide range of queries, ensuring that customers receive prompt and relevant information at all times.
+
 
 
