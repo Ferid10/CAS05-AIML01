@@ -56,12 +56,16 @@ def view_offers():
 @app.route('/chat', methods=['GET', 'POST'])
 def chat():
     if request.method == 'POST':
-        user_input = request.form['user_input']
+        user_input = request.form.get('user_input')  # Ensure correct form data retrieval
         if user_input.lower() == 'exit':
             return redirect(url_for('home'))
-        response = chat_bot(user_input)
-        return render_template('index.html', user_input=user_input, response=response)
-    return render_template('index.html')
+        
+        response = chat_bot(user_input)  # Get AI response
+        return render_template('chat.html', user_input=user_input, response=response)  # Pass response to template
 
+    return render_template('chat.html', user_input="", response="")  # Ensure the page loads properly on GET request
 if __name__ == '__main__':
     app.run(debug=True)
+    
+
+
