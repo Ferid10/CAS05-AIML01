@@ -3,33 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ecommerce Chatbot</title>
+    <title>Ecommerce AI</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
     <div class="chatbox">
-        <div class="chatbox-header">
-            <h1>Ecommerce Chatbot</h1>
+        <div class="chatbox-header">Ecommerce AI</div>
+        <div class="chatbox-content" id="chat-content">
+            <p><strong>Ecommerce AI:</strong> Hi! How can I assist you today?</p>
         </div>
-        <div class="chatbox-content">
-            <h2>Choose an option:</h2>
-            <ul>
-                <li><a href="{{ url_for('track_package') }}">Track Package</a></li>
-                <li><a href="{{ url_for('view_offers') }}">View Offers</a></li>
-            </ul>
+        <div class="chatbox-buttons">
+            <button onclick="window.location.href='{{ url_for('chat') }}'">AI Chat</button>
+            <button onclick="location.href='{{ url_for('track_package') }}'">Track Package</button>
+            <button onclick="location.href='{{ url_for('view_offers') }}'">View Offers</button>
         </div>
         <div class="chatbox-footer">
-            <form method="POST" action="{{ url_for('chat') }}">
-                <label for="user_input">You:</label>
-                <input type="text" id="user_input" name="user_input" required>
+            <form method="POST">
+                <input type="text" name="user_input" id="user-input" placeholder="Write a message..." required>
                 <button type="submit">Send</button>
             </form>
-            {% if response %}
-            <div class="response">
-                <p><strong>You:</strong> {{ user_input }}</p>
-                <p><strong>Chatbot:</strong> {{ response }}</p>
-            </div>
-            {% endif %}
         </div>
     </div>
 </body>
