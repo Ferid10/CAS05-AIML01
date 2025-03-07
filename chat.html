@@ -9,7 +9,7 @@
 <body>
     <div class="chatbox">
         <div class="chatbox-header">
-            <h1>AI Chat</h1>
+            <h1>Ecommerce AI Chat</h1>
         </div>
         <div class="chatbox-content">
             <form method="POST">
@@ -17,12 +17,14 @@
                 <input type="text" id="user_input" name="user_input" required>
                 <button type="submit">Send</button>
             </form>
+            
             {% if response %}
             <div class="response">
                 <p><strong>You:</strong> {{ user_input }}</p>
-                <p><strong>Chatbot:</strong> {{ response }}</p>
+                <p><strong>Ecommerce AI:</strong> {{ response }}</p>
             </div>
             {% endif %}
+            
             <a href="{{ url_for('home') }}">Back to Home</a>
         </div>
     </div>
