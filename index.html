@@ -7,15 +7,30 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-    <div class="chat-container">
-        <h1>Welcome to Our E-commerce Chatbot</h1>
-        <h2>How can I assist you today?</h2>
-        <ul>
-            <li><a href="{{ url_for('track_package') }}">Track Package</a></li>
-            <li><a href="{{ url_for('view_offers') }}">View Offers</a></li>
-            <li><a href="{{ url_for('chat') }}">Chat with AI</a></li>
-        </ul>
+    <div class="chatbox">
+        <div class="chatbox-header">
+            <h1>Ecommerce Chatbot</h1>
+        </div>
+        <div class="chatbox-content">
+            <h2>Choose an option:</h2>
+            <ul>
+                <li><a href="{{ url_for('track_package') }}">Track Package</a></li>
+                <li><a href="{{ url_for('view_offers') }}">View Offers</a></li>
+            </ul>
+        </div>
+        <div class="chatbox-footer">
+            <form method="POST" action="{{ url_for('chat') }}">
+                <label for="user_input">You:</label>
+                <input type="text" id="user_input" name="user_input" required>
+                <button type="submit">Send</button>
+            </form>
+            {% if response %}
+            <div class="response">
+                <p><strong>You:</strong> {{ user_input }}</p>
+                <p><strong>Chatbot:</strong> {{ response }}</p>
+            </div>
+            {% endif %}
+        </div>
     </div>
-    <a href="{{ url_for('chat') }}" class="chat-button">💬</a>
 </body>
 </html>
