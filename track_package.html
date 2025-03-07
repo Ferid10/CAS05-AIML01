@@ -7,15 +7,18 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-    <div class="chat-container">
-        <h1>Track Your Package</h1>
-        <form method="POST">
-            <label for="tracking_id">Enter your tracking ID:</label>
-            <input type="text" id="tracking_id" name="tracking_id" required>
-            <button type="submit">Track</button>
-        </form>
-        <a href="{{ url_for('home') }}">Back to Home</a>
+    <div class="chatbox">
+        <div class="chatbox-header">
+            <h1>Track Package</h1>
+        </div>
+        <div class="chatbox-content">
+            <form method="POST">
+                <label for="tracking_id">Enter your tracking ID:</label>
+                <input type="text" id="tracking_id" name="tracking_id" required>
+                <button type="submit">Track</button>
+            </form>
+            <a href="{{ url_for('home') }}">Back to Home</a>
+        </div>
     </div>
-    <a href="{{ url_for('chat') }}" class="chat-button">💬</a>
 </body>
 </html>
