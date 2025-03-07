@@ -7,23 +7,24 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-    <div class="chat-container">
-        <h1>AI Chat</h1>
-        <div class="chat-box">
+    <div class="chatbox">
+        <div class="chatbox-header">
+            <h1>AI Chat</h1>
+        </div>
+        <div class="chatbox-content">
+            <form method="POST">
+                <label for="user_input">You:</label>
+                <input type="text" id="user_input" name="user_input" required>
+                <button type="submit">Send</button>
+            </form>
             {% if response %}
-            <div class="message user-message">
+            <div class="response">
                 <p><strong>You:</strong> {{ user_input }}</p>
-            </div>
-            <div class="message bot-message">
                 <p><strong>Chatbot:</strong> {{ response }}</p>
             </div>
             {% endif %}
+            <a href="{{ url_for('home') }}">Back to Home</a>
         </div>
-        <form method="POST" class="chat-form">
-            <input type="text" id="user_input" name="user_input" placeholder="Type your message..." required>
-            <button type="submit">Send</button>
-        </form>
     </div>
-    <a href="{{ url_for('home') }}" class="chat-button">💬</a>
 </body>
 </html>
