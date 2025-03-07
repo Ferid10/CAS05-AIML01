@@ -21,10 +21,33 @@
             {% if response %}
             <div class="response">
                 <p><strong>You:</strong> {{ user_input }}</p>
-                <p><strong>Ecommerce AI:</strong> {{ response }}</p>
+                <p><strong>Ecommerce AI:</strong> <span id="chat-response">{{ response }}</span></p>
+                <button id="voice-button">🔊 Speak</button>  
             </div>
+
+            <script>
+                function speakResponse(text) {
+                    if ('speechSynthesis' in window) {
+                        let speech = new SpeechSynthesisUtterance(text);
+                        speech.lang = 'en-US'; 
+                        speech.rate = 1;  
+                        speech.pitch = 1; 
+                        window.speechSynthesis.speak(speech);
+                    } else {
+                        alert("Text-to-Speech is not supported in this browser.");
+                    }
+                }
+
+                
+                document.getElementById("voice-button").addEventListener("click", function() {
+                    const chatbotResponse = document.getElementById("chat-response");
+                    if (chatbotResponse) {
+                        speakResponse(chatbotResponse.textContent);
+                    }
+                });
+            </script>
             {% endif %}
-            
+
             <a href="{{ url_for('home') }}">Back to Home</a>
         </div>
     </div>
